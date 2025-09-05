@@ -1,0 +1,53 @@
+/* Page layout */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f711c9 0%, #ACB6E5 100%);
+  }
+  
+  /* Wrapper handles the smooth float (only translateY) */
+  .hero-wrap {
+    display: inline-block;
+    will-change: transform;
+    animation: float 4s ease-in-out infinite alternate;
+  }
+  
+  /* H1 handles the bounce (scale & small translate) */
+  .hero {
+    display: inline-block;
+    font-size: 82px;
+    color: white;
+    padding: 22px 44px;
+    border-radius: 14px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.25);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
+    transform-origin: center;
+    will-change: transform;
+    animation: bounce 1.1s cubic-bezier(.28,.84,.42,1) infinite;
+  }
+  
+  /* gentle float: only translateY on the wrapper */
+  @keyframes float {
+    0%   { transform: translateY(-8px); }
+    100% { transform: translateY(8px); }
+  }
+  
+  /* energetic bounce: scale + small translate on the inner element */
+  @keyframes bounce {
+    0%   { transform: translateY(0) scale(1); }
+    10%  { transform: translateY(-8px) scale(1.05); }
+    30%  { transform: translateY(0) scale(0.98); }
+    50%  { transform: translateY(-4px) scale(1.02); }
+    100% { transform: translateY(0) scale(1); }
+  }
+  
+  /* Hover: make bounce snappier; keeps float running */
+  .hero-wrap:hover .hero {
+    animation-duration: 0.9s;
+  }
+  
